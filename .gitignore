@@ -4,6 +4,7 @@
 /dist/
 /*.egg-info/
 .coverage
+.coverage.*
 
 # Confidential config files. UNDER NO CIRCUSTANCE SHOULD YOU PUSH THESE FILES TO THE REMOTE GIT REPO.
 exp_config.yaml
