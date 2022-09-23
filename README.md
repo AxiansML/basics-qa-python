@@ -7,7 +7,7 @@
 
 # Basics on Quality Assurance in Python
 
-The basics towards better software with Python by means of development best
+The basics towards better ML software with Python and MLOps, by means of development best
 practices. A work in progress with a continuous improvement mindset.
 
 **NOTICE:** Using UNIX shell commands in a Debian GNU/Linux Bash shell.

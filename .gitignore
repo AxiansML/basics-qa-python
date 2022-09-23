@@ -4,3 +4,9 @@
 /dist/
 /*.egg-info/
 .coverage
+
+# Confidential config files. UNDER NO CIRCUSTANCE SHOULD YOU PUSH THESE FILES TO THE REMOTE GIT REPO.
+exp_config.yaml
+
+# Mac OS-specific storage files
+.DS_Store
