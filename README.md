@@ -377,6 +377,11 @@ Later, you may add your local Git-based repository to a remote, such as,
 git remote add origin <URL>
 ```
 
+# TODO: these parameters are used for different run purposes. Find a better way!
+port: 8000
+db_api_url: "https://adb-32025867620321.1.azuredatabricks.net/model/linear_reg/1/invocations"
+
+
 ## License
 
 Copyright 2022 Nuno A. C. Henriques https://nunoachenriques.net

@@ -1,11 +1,6 @@
 import uvicorn
-import yaml
 from fastapi import FastAPI
 from pydantic import BaseModel
-
-# Load the app configuration file
-with open("app_config.yaml") as f:
-    APP_CONFIG = yaml.safe_load(f)
 
 
 class Prediction(BaseModel):
@@ -43,4 +38,4 @@ async def predict(input: str) -> dict:
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, port=APP_CONFIG["port"])
+    uvicorn.run(app, port=8000)
