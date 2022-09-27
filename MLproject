@@ -1,6 +1,6 @@
 name: linear_regression
 
-conda_env: virtual_env.yaml
+python_env: virtual_env.yaml
 
 entry_points:
   train:
