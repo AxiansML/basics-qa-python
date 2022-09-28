@@ -153,25 +153,21 @@ class LinearRegressor(pl.LightningModule):
             dict: Dictionary with some of the train hyperparameters and callbacks.
         """
         callbacks = [
-            EarlyStopping(monitor="val_score", mode="max", verbose=True),
+            EarlyStopping(monitor="epoch_val_score", mode="max", verbose=True),
             ModelCheckpoint(
                 dirpath=os.path.join(os.getcwd(), "checkpoints"),
                 save_top_k=1,
                 verbose=True,
-                monitor="val_score",
+                monitor="epoch_val_score",
                 mode="max",
             ),
             LearningRateMonitor(),
         ]
         train_params = dict(
-            num_sanity_val_steps=self.args["num_sanity_val_steps"],
-            accumulate_grad_batches=self.args["gradient_accumulation_steps"],
             max_epochs=self.args["max_epochs"],
             gpus=self.args["gpus"],
             strategy="ddp",
             precision=32,
-            gradient_clip_val=self.args["max_grad_norm"],
-            val_check_interval=self.args["val_check_interval"],
             callbacks=callbacks,
         )
 

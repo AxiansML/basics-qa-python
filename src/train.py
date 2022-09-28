@@ -6,15 +6,13 @@ from pytorch_lightning import Trainer
 
 from model import DummyDataModule, LinearRegressor
 
-
-def main():
+if __name__ == "__main__":
     parser = ArgumentParser(description="")
 
     parser.add_argument("--resume_checkpoint", type=str)
     parser.add_argument("--resume_run_id", type=str)
     parser.add_argument("--max_epochs", type=int)
     parser.add_argument("--gpus", type=int)
-    parser.add_argument("--accelerator", type=str)
     parser.add_argument("--batch_size", type=int)
     parser.add_argument("--lr", type=float)
     parser.add_argument("--num_samples", type=int)

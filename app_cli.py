@@ -18,7 +18,7 @@ Basics on Quality Assurance in Python
 Application helper for the command-line interface.
 """
 
-from basics.cli import Cli
+from src.cli import Cli
 
 if __name__ == "__main__":
     Cli().bootstrap().run()

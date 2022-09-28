@@ -1,13 +1,14 @@
-/**/__pycache__/
-/.idea/
-/build/
-/dist/
-/*.egg-info/
-.coverage
-.coverage.*
+/**/*cache*
+/**/*logs*
+/checkpoints
+.coverage*
+
+# Large files.
+/data
+/models
 
 # Confidential config files. UNDER NO CIRCUSTANCE SHOULD YOU PUSH THESE FILES TO THE REMOTE GIT REPO.
 mlflow_config.yaml
 
-# Mac OS-specific storage files
+# MacOS-specific storage files
 .DS_Store

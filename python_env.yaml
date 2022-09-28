@@ -1,7 +1,0 @@
-# Python version required to run the project.
-python: "3.10"
-# Dependencies required to run the project.
-dependencies:
-  - pip
-  - pip:
-    - -r requirements.txt
