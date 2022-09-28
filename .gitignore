@@ -1,11 +1,11 @@
-/**/*cache*
-/**/*logs*
-/checkpoints
+**/*cache*
+**/*logs*
+checkpoints/
 .coverage*
 
 # Large files.
-/data
-/models
+data/
+models/
 
 # Confidential config files. UNDER NO CIRCUSTANCE SHOULD YOU PUSH THESE FILES TO THE REMOTE GIT REPO.
 mlflow_config.yaml
