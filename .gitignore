@@ -2,13 +2,11 @@
 **/*logs*
 checkpoints/
 .coverage*
+.env
 
 # Large files.
 data/
 models/
-
-# Confidential config files. UNDER NO CIRCUSTANCE SHOULD YOU PUSH THESE FILES TO THE REMOTE GIT REPO.
-mlflow_config.yaml
 
 # MacOS-specific storage files
 .DS_Store
