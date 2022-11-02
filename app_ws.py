@@ -10,6 +10,7 @@ from src.logger import get_logger
 
 # Get Logger
 my_logger = get_logger(__name__)
+my_logger.info(f"Logs file path: {os.getenv('LOGS_DIR')}")
 
 # Create fastAPI instance
 app = FastAPI()
@@ -44,8 +45,6 @@ async def predict(input_texts: List[str]):
     Returns:
         output_dict: A dictionary containing the model's prediction and score.
     """
-    my_logger.info(f"Logs file path: {os.getenv('LOGS_DIR')}")
-
     # Dummy hardcoded function, to show how to return the output of the model
     output_dict = {"prediction": "", "score": 0.0}
     if input_texts[0].lower() == "hello world":
