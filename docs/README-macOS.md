@@ -58,7 +58,7 @@ Finally, **restart your shell** to instantiate the path!
 ```shell
 mkdir project_name
 cd project_name
-pipenv --python 3.11
+pipenv --python 3.9.5
 ```
 
 ## [Quality Assurance](../README.md#quality-assurance)

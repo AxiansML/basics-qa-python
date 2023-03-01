@@ -28,4 +28,4 @@ pytorch_lightning = "*"
 types-pyyaml = "*"
 
 [requires]
-python_version = "3.11"
+python_version = "3.9.5"
