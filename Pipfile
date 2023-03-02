@@ -7,9 +7,8 @@ name = "pypi"
 tqdm = "*"
 uvicorn = "*"
 pyyaml = "*"
+types-pyyaml = "*"
 fastapi = "*"
-
-[dev-packages]
 black = "*"
 isort = "*"
 mypy = "*"
@@ -23,9 +22,10 @@ jupyter-black = "*"
 mlflow = "*"
 pandas = "*"
 sklearn = "*"
-torch = "*"
 pytorch_lightning = "*"
-types-pyyaml = "*"
+
+[dev-packages]
+
 
 [requires]
 python_version = "3.9.5"
