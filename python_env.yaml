@@ -1,0 +1,6 @@
+python: "3.9.5"
+build_dependencies:
+  - pip
+dependencies:
+  - mlflow==2.1.1
+  - -r requirements.txt
