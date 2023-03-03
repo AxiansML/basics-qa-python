@@ -19,13 +19,12 @@ flake8-pyproject = "*"
 pre-commit = "*"
 ipykernel = "*"
 jupyter-black = "*"
-mlflow = "*"
 pandas = "*"
 sklearn = "*"
 pytorch_lightning = "*"
+mlflow = "==2.1.1"
 
 [dev-packages]
-
 
 [requires]
 python_version = "3.9.5"
