@@ -43,7 +43,6 @@ Adapt accordingly your Operating System.
     - [Create `.env` file](#create-env-file)
     - [Change `model.py` and `train.py` scripts](#change-modelpy-and-trainpy-scripts)
     - [MLproject file](#mlproject-file)
-  - [License](#license)
 
 ## Prerequisites
 
@@ -343,19 +342,3 @@ The **[train.py](src/train.py)** script is where you load your model and dataset
 ### MLproject file
 
 The **[MLproject](MLproject)** file is where you define the entry points of your `mlflow` project. In this example, you only have the **[train](src/train.py)** entry point but you can create more if you wish, by creating additional scripts (*e.g.,* `predict.py`) and defining the input parameters and shell command, in the **[MLproject](MLproject)** file.
-
-## License
-
-Copyright 2022 Nuno A. C. Henriques https://nunoachenriques.net
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-https://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
