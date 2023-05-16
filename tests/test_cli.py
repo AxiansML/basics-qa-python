@@ -24,7 +24,7 @@ import sys
 
 import pytest
 
-from basics.cli import Cli
+from src.cli import Cli
 
 
 class TestCli:

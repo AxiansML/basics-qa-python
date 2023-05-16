@@ -1,7 +1,13 @@
-/**/__pycache__/
-/.idea/
-/build/
-/dist/
-/*.egg-info/
-.coverage
+**/*cache*
+**/*logs*
+checkpoints/
+.coverage*
+.env
 Pipfile.lock
+
+# Large files.
+data/
+models/
+
+# MacOS-specific storage files
+.DS_Store

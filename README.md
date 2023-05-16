@@ -7,7 +7,7 @@
 
 # Basics on Quality Assurance in Python
 
-The basics towards better software with Python by means of development best
+The basics towards better ML software with Python and MLOps, by means of development best
 practices. A work in progress with a continuous improvement mindset.
 
 There are some basic system-wide prerequisites such as `python`, `venv`, `pip`,
@@ -17,6 +17,8 @@ is installed to assure that any Python version requested is available and
 easily switched to (independently of the system Python, it uses a collection
 of scripts).
 
+**NOTICE:** You can use other python virtualenv managers, like `conda`, but we recommend you use `pipenv`. For more information on how it works, consult its [usage](https://github.com/pypa/pipenv#usage).
+
 ![Pipenv and pre-commit flow diagram](docs/pipenv-pre-commit.jpg)
 <figcaption><code>pipenv</code> and <code>pre-commit</code> flow diagram.</figcaption>
 
@@ -25,10 +27,22 @@ Adapt accordingly your Operating System.
 
 ## Content
 
-* [Prerequisites](#prerequisites)
-* [Quality Assurance](#quality-assurance)
-* [Wrap-up](#wrap-up)
-* [License](#license)
+- [Basics on Quality Assurance in Python](#basics-on-quality-assurance-in-python)
+  - [Content](#content)
+  - [Prerequisites](#prerequisites)
+  - [Quality Assurance](#quality-assurance)
+    - [Code Formatting](#code-formatting)
+    - [Code Style Enforcement](#code-style-enforcement)
+    - [Type Checking](#type-checking)
+    - [Security](#security)
+    - [Testing](#testing)
+    - [Git Hooks](#git-hooks)
+    - [Wrap-up](#wrap-up)
+  - [MLOps](#mlops)
+    - [Prerequisites](#prerequisites-1)
+    - [Create `.env` file](#create-env-file)
+    - [Change `model.py` and `train.py` scripts](#change-modelpy-and-trainpy-scripts)
+    - [MLproject file](#mlproject-file)
 
 ## Prerequisites
 
@@ -43,20 +57,7 @@ Adapt accordingly your Operating System.
 **NOTICE:** Make sure you've completed the [Prerequisites](#prerequisites) for
 your operating system case!
 
-### Clean and Tidy
-
-#### `/.gitignore`
-
-Avoid committing and pushing generated, private, local files. More exclusions
-may be added at your discretion.
-
-```shell
-/**/__pycache__/
-/.idea/
-/build/
-/dist/
-/*.egg-info/
-```
+If you want to setup quality assurance libraries and configure pre-commit, in your project, follow the steps below. If you don't need quality assurance in your project, skip this section.
 
 ### Code Formatting
 
@@ -276,13 +277,11 @@ pipenv run pre-commit run --all-files --hook-stage commit
 pipenv run pre-commit run --all-files --hook-stage push
 ```
 
-## Wrap-up
+### Wrap-up
 
-All the [prerequisites](#prerequisites) must be accomplished (by following
+All the prerequisites must be accomplished (by following
 the above instructions or by means of a previous project installation).
-The project files for [quality assurance](#quality-assurance) must be in place
-(by means of unzipping a download from
-[GitHub](https://github.com/nunoachenriques/basics-qa-python)).
+The project files for quality assurance must be in place by means of creating a new repository from this template (click the `Use this template` button).
 
 ```shell
 pipenv install --dev
@@ -298,18 +297,48 @@ Later, you may add your local Git-based repository to a remote, such as,
 git remote add origin <URL>
 ```
 
-## License
+## MLOps
 
-Copyright 2022 Nuno A. C. Henriques https://nunoachenriques.net
+### Prerequisites
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+This section will show you how to setup a MLOps framework to easily run and track all your experiments. This is done with `Azure`, `Databricks` and `MLflow`. First, make sure you have the following prerequisites:
 
-https://www.apache.org/licenses/LICENSE-2.0
+- Access to an Azure Databricks Workspace
+- `databricks-cli` installed and configured (follow this [guide](https://docs.databricks.com/dev-tools/cli/index.html))
+- `mlflow` installed (for info, check their [docs](https://mlflow.org/docs/latest/index.html))
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+### Create `.env` file
+
+Be sure to create a `.env` file on your local project which will create the directory paths and other variables in your system. 
+
+```shell
+ROOT_DIR = "/path/to/your/project-dir"
+RAW_DATA_DIR = "${ROOT_DIR}/data/raw"
+PROCESSED_DATA_DIR = "${ROOT_DIR}/data/processed"
+RESULTS_DIR = "${ROOT_DIR}/results"
+MODELS_DIR = "${ROOT_DIR}/models"
+
+LOGS_DIR = "${ROOT_DIR}/logs"
+LOGGER_LEVEL = "INFO"
+
+EXP_NAME = "/Users/<your-databricks-user-email>/<name-of-the-experiment>"
+
+DATABRICKS_HOST = "<your-databricks-workspace-url>"
+DATABRICKS_TOKEN = "<your-databricks-access-token>"
+
+GIT_USER = "<your-github-username>"
+GIT_TOKEN = "<your-github-access-token>"
+GIT_URI = "github.com/AxiansML/<your-github-repo-name>.git"
+```
+
+### Change `model.py` and `train.py` scripts
+
+The **[model.py](src/model.py)** script is where the model and data modules are defined. If you´re using `pytorch` in your project, check out how to do this using `pytorch_lightning`, by following the links below. Otherwise, adapt this code to your ML library (`tensorflow` or other).
+- [LightningModule](https://pytorch-lightning.readthedocs.io/en/stable/common/lightning_module.html)
+- [LightningDataModule](https://pytorch-lightning.readthedocs.io/en/stable/data/datamodule.html)
+
+The **[train.py](src/train.py)** script is where you load your model and dataset, input the hyperparameters, train the model and log the results to `mlflow`.
+
+### MLproject file
+
+The **[MLproject](MLproject)** file is where you define the entry points of your `mlflow` project. In this example, you only have the **[train](src/train.py)** entry point but you can create more if you wish, by creating additional scripts (*e.g.,* `predict.py`) and defining the input parameters and shell command, in the **[MLproject](MLproject)** file.

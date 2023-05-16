@@ -1,0 +1,32 @@
+name: linear_regression
+
+python_env: python_env.yaml
+
+entry_points:
+  train:
+    parameters:
+      resume_checkpoint: {type: str}
+      resume_run_id: {type: str}
+      max_epochs: {type: int, default: 5}
+      gpus: {type: int, default: 0}
+      batch_size: {type: int, default: 64}
+      lr: {type: float, default: 0.001}
+      num_samples: {type: int, default: 2000}
+      val_ratio: {type: float, default: 0.2}
+      test_ratio: {type: float, default: 0.0}
+      random_seed: {type: int, default: "None"}
+      dataset: {type: str}
+
+    command: |
+          python src/train.py \
+            --resume_checkpoint {resume_checkpoint} \
+            --resume_run_id {resume_run_id} \
+            --max_epochs {max_epochs} \
+            --gpus {gpus} \
+            --batch_size {batch_size} \
+            --lr {lr} \
+            --num_samples {num_samples} \
+            --val_ratio {val_ratio} \
+            --test_ratio {test_ratio} \
+            --random_seed {random_seed} \
+            --dataset {dataset}

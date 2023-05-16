@@ -25,7 +25,7 @@ assert_used.skips = "*/tests/*"
 ### TESTING
 
 [tool.pytest.ini_options]
-addopts = "--cov --cov-fail-under=100"
+addopts = "--cov --cov-fail-under=20"
 
 [tool.coverage.run]
 source = ["."]

@@ -5,8 +5,10 @@ name = "pypi"
 
 [packages]
 tqdm = "*"
-
-[dev-packages]
+uvicorn = "*"
+pyyaml = "*"
+types-pyyaml = "*"
+fastapi = "*"
 black = "*"
 isort = "*"
 mypy = "*"
@@ -15,6 +17,14 @@ pytest = "*"
 pytest-cov = "*"
 flake8-pyproject = "*"
 pre-commit = "*"
+ipykernel = "*"
+jupyter-black = "*"
+pandas = "*"
+pytorch_lightning = "*"
+mlflow = "==2.1.1"
+scikit-learn = "*"
+
+[dev-packages]
 
 [requires]
-python_version = "3.11"
+python_version = "3.9.5"
