@@ -7,7 +7,7 @@
 
 # Basics on Quality Assurance in Python
 
-The basics towards better ML software with Python and MLOps, by means of development best
+The basics towards better Python software, by means of development best
 practices. A work in progress with a continuous improvement mindset.
 
 There are some basic system-wide prerequisites such as `python`, `venv`, `pip`,
@@ -38,11 +38,7 @@ Adapt accordingly your Operating System.
     - [Testing](#testing)
     - [Git Hooks](#git-hooks)
     - [Wrap-up](#wrap-up)
-  - [MLOps](#mlops)
-    - [Prerequisites](#prerequisites-1)
-    - [Create `.env` file](#create-env-file)
-    - [Change `model.py` and `train.py` scripts](#change-modelpy-and-trainpy-scripts)
-    - [MLproject file](#mlproject-file)
+  - [Create `.env` file](#create-env-file)
 
 ## Prerequisites
 
@@ -297,48 +293,13 @@ Later, you may add your local Git-based repository to a remote, such as,
 git remote add origin <URL>
 ```
 
-## MLOps
-
-### Prerequisites
-
-This section will show you how to setup a MLOps framework to easily run and track all your experiments. This is done with `Azure`, `Databricks` and `MLflow`. First, make sure you have the following prerequisites:
-
-- Access to an Azure Databricks Workspace
-- `databricks-cli` installed and configured (follow this [guide](https://docs.databricks.com/dev-tools/cli/index.html))
-- `mlflow` installed (for info, check their [docs](https://mlflow.org/docs/latest/index.html))
-
-### Create `.env` file
+## Create `.env` file
 
 Be sure to create a `.env` file on your local project which will create the directory paths and other variables in your system. 
 
 ```shell
-ROOT_DIR = "/path/to/your/project-dir"
-RAW_DATA_DIR = "${ROOT_DIR}/data/raw"
-PROCESSED_DATA_DIR = "${ROOT_DIR}/data/processed"
-RESULTS_DIR = "${ROOT_DIR}/results"
-MODELS_DIR = "${ROOT_DIR}/models"
+ROOT_DIR = "/Users/alexmfalm/Documents/Git_Repos/basics-mlops-python"
 
 LOGS_DIR = "${ROOT_DIR}/logs"
 LOGGER_LEVEL = "INFO"
-
-EXP_NAME = "/Users/<your-databricks-user-email>/<name-of-the-experiment>"
-
-DATABRICKS_HOST = "<your-databricks-workspace-url>"
-DATABRICKS_TOKEN = "<your-databricks-access-token>"
-
-GIT_USER = "<your-github-username>"
-GIT_TOKEN = "<your-github-access-token>"
-GIT_URI = "github.com/AxiansML/<your-github-repo-name>.git"
 ```
-
-### Change `model.py` and `train.py` scripts
-
-The **[model.py](src/model.py)** script is where the model and data modules are defined. If you´re using `pytorch` in your project, check out how to do this using `pytorch_lightning`, by following the links below. Otherwise, adapt this code to your ML library (`tensorflow` or other).
-- [LightningModule](https://pytorch-lightning.readthedocs.io/en/stable/common/lightning_module.html)
-- [LightningDataModule](https://pytorch-lightning.readthedocs.io/en/stable/data/datamodule.html)
-
-The **[train.py](src/train.py)** script is where you load your model and dataset, input the hyperparameters, train the model and log the results to `mlflow`.
-
-### MLproject file
-
-The **[MLproject](MLproject)** file is where you define the entry points of your `mlflow` project. In this example, you only have the **[train](src/train.py)** entry point but you can create more if you wish, by creating additional scripts (*e.g.,* `predict.py`) and defining the input parameters and shell command, in the **[MLproject](MLproject)** file.
